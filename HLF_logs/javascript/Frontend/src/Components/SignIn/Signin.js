@@ -55,7 +55,7 @@ class Signin extends React.Component {
                     this.props.onRouteChange('home');
                 }else {
                     console.log(data.userName);
-                    alert(`Username does not exists!!`);
+                    alert(data.message);
                     this.props.onRouteChange('signin');
                 }
             })

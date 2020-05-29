@@ -7,12 +7,16 @@ const Joi = require('joi');
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const Mongoose = require('mongoose');
+const Bcrypt = require('bcrypt');
 let network = require('./network.js');
 var CircularJSON = require('circular-json');
+var UserModel = require('./UserModel');
 app.use(express.json());
 app.use(cors());
 
 // Mongo Db attach 
+Mongoose.connect("mongodb://localhost/sla");
 //Encryt using Bcrypt
 
 
@@ -57,6 +61,20 @@ async function main() {
             }
             currentUser = '';
         }
+        
+        var user = new UserModel({
+            username:"admin",
+            password:"admin",
+            email:"admin@example.com",
+            type:0
+        })
+        
+        var result = await user.save()
+        
+        if(!result){
+            console.log("!!!! ADMIN NOT REGISTERED !!!")
+        }
+        
 
         app.get('/',(req,res) => {
             res.send('This is root');
@@ -65,7 +83,16 @@ async function main() {
         app.post('/register',async function(req,res) {
             var userId = req.body.username;
             var type=req.body.type;
-            // Store Pass Word and encryt 
+            var store_success = false;
+            // Store User In MongoDB
+            try {
+                var user = new UserModel(req.body);
+                var result = await user.save();
+                store_success = true;
+            } catch(err ){
+                res.status(400).send({message: "FAILED TO REGISTER USER ON DB"});
+            }
+
             let response = await network.registerUser(userId,type);
             console.log('response from registerUser: ');
             console.log(response);
@@ -108,11 +135,34 @@ async function main() {
         app.post('/signin',async function(req,res) {
             var userId = req.body.username;
             // Take user password create hash using bcrypt
-            var stat=await signIn(userId);
+            
             var pass=req.body.password;
+            var success_db = false;
+            try{
+                var user = await UserModel.findOne({username:userId}).exec();
+                if(!user){
+                    return res.status(400).send({ message: "The user does not exist" });
+                }
+                user.comparePassword(pass , (err , match) => {
+                    if(!match){
+                        return res.status(400).send({ message: "The password is invalid" });
+                    }
+                    else{
+                        success_db =true;
+                        
+                    }
+                });
+
+
+            }catch(err){
+                res.status(400).send({message:"Some Error Occured During Login on the Back End "});
+            }
+            if(success_db){
+                var stat=await signIn(userId);
+            }
             console.log(stat);
             //Check Login Here for Password and then edit the if else blocks
-            
+
             if(stat==1) {
                 currentUser=userId;
                 signedInUsers.push(currentUser);
@@ -123,9 +173,9 @@ async function main() {
                 res.json(response_sign)
             }else if(stat==0) {
                 console.log("h");
-                res.status(400).json(`User "${userId}" does not exists!!!\nPlease register first!!`)
+                res.status(400).send({message:`User "${userId}" does not exists!!!\nPlease register first!!`})
             }else if(stat==2) {
-                res.status(400).json(`User "${userId}" already logged in!!!`)
+                res.status(400).send({message: `User "${userId}" already logged in!!`})
             }
         });
 
