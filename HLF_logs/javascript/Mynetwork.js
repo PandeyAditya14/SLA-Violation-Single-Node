@@ -92,10 +92,9 @@ exports.invoke = async function (networkObj, isQuery, func, args) {
     } else {
       console.log('notQuery');
       if (args) {
-        if(typeof(args)!=='string') {
-          args = JSON.parse(args[0]);
-          args = JSON.stringify(args);
-        }        
+        args = JSON.parse(args[0]);
+        args = JSON.stringify(args);
+        console.log("dfsddfasdfasdf",typeof(args),args)
         let response = await networkObj.contract.submitTransaction(func, args);
         console.log('after submit');
 

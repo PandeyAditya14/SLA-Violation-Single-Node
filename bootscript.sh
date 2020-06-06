@@ -17,6 +17,7 @@ cd HLF_logs
 cd javascript
 ./remove.sh
 
+node cleanDB.js
 node enrollAdmin.js
 #node registerInit.js
 

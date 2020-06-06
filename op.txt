@@ -1,0 +1,103 @@
+/home/aditya/fabric/SLA-Violation-Single-Node-Compensation
+Stopping for channel 'mychannel' with CLI timeout of '10' seconds and CLI delay of '3' seconds
+proceeding ...
+---- No containers available for deletion ----
+Untagged: dev-peer0.org1.example.com-logchain-1.0-cec6ee505ec420edbbcd6771f2220d977b376582c03ff0a74547c6d959b65e7e:latest
+Deleted: sha256:f881435d9625566c480a2714e5c23a2c9c3692108591c581eb85983a673e6304
+Deleted: sha256:7df4b74f8b456813ca102b1efd6b4ca1422bff6aab8931b0a444b1ba7c57fd4e
+Deleted: sha256:040fc189d7a6333bb5e753a9fe6a2339fbe7293126cc0b706aea0ed613feff24
+Deleted: sha256:967c39b3f5dd1092e0f2c957e087dbeac5a852f16add24738536f8fbecd7e7a0
+Stopping for channel 'mychannel' with CLI timeout of '10' seconds and CLI delay of '3' seconds
+proceeding ...
+---- No containers available for deletion ----
+---- No images available for deletion ----
+
+Starting for channel 'mychannel' with CLI timeout of '10' seconds and CLI delay of '3' seconds and using database 'couchdb'
+proceeding ...
+LOCAL_VERSION=2.1.0
+DOCKER_IMAGE_VERSION=1.4.6
+=================== WARNING ===================
+  Local fabric binaries and docker images are  
+  out of  sync. This may cause problems.       
+===============================================
+/home/aditya/fabric/SLA-Violation-Single-Node-Compensation/first-network/../bin/cryptogen
+
+##########################################################
+##### Generate certificates using cryptogen tool #########
+##########################################################
+org1.example.com
+
+Generate CCP files for Org1
+/home/aditya/fabric/SLA-Violation-Single-Node-Compensation/first-network/../bin/configtxgen
+##########################################################
+#########  Generating Orderer Genesis block ##############
+##########################################################
+CONSENSUS_TYPE=solo
+
+#################################################################
+### Generating channel configuration transaction 'channel.tx' ###
+#################################################################
+
+#################################################################
+#######    Generating anchor peer update for Org1MSP   ##########
+#################################################################
+The Docker Engine you're using is running in swarm mode.
+
+Compose does not use swarm mode to deploy services to multiple nodes in a swarm. All containers will be scheduled on the current node.
+
+To deploy your application across the swarm, use `docker stack deploy`.
+
+Creating network "net_byfn" with the default driver
+Creating volume "net_orderer.example.com" with default driver
+Creating volume "net_peer0.org1.example.com" with default driver
+Creating ca_peerOrg1 ... 
+Creating couchdb0    ... 
+Creating orderer.example.com ... 
+[1A[2KCreating orderer.example.com ... [32mdone[0m[1B[3A[2KCreating ca_peerOrg1         ... [32mdone[0m[3B[2A[2KCreating couchdb0            ... [32mdone[0m[2BCreating peer0.org1.example.com ... 
+[1A[2KCreating peer0.org1.example.com ... [32mdone[0m[1BCreating cli                    ... 
+[1A[2KCreating cli                    ... [32mdone[0m[1BCONTAINER ID        IMAGE                               COMMAND                  CREATED             STATUS                  PORTS                                        NAMES
+21af3c51f3e6        hyperledger/fabric-tools:latest     "/bin/bash"              1 second ago        Up Less than a second                                                cli
+2dd2225d7917        hyperledger/fabric-peer:latest      "peer node start"        1 second ago        Up Less than a second   0.0.0.0:7051->7051/tcp                       peer0.org1.example.com
+03cef3cc9fe6        hyperledger/fabric-couchdb          "tini -- /docker-ent…"   3 seconds ago       Up 1 second             4369/tcp, 9100/tcp, 0.0.0.0:5984->5984/tcp   couchdb0
+1daf5fe592d0        hyperledger/fabric-ca:latest        "sh -c 'fabric-ca-se…"   3 seconds ago       Up 1 second             0.0.0.0:7054->7054/tcp                       ca_peerOrg1
+e1a40b0b4c17        hyperledger/fabric-orderer:latest   "orderer"                3 seconds ago       Up 1 second             0.0.0.0:7050->7050/tcp                       orderer.example.com
+
+ ____    _____      _      ____    _____ 
+/ ___|  |_   _|    / \    |  _ \  |_   _|
+\___ \    | |     / _ \   | |_) |   | |  
+ ___) |   | |    / ___ \  |  _ <    | |  
+|____/    |_|   /_/   \_\ |_| \_\   |_|  
+
+Build your first network (BYFN) end-to-end test
+
+Channel name : mychannel
+Creating channel...
+[34m2020-05-29 08:36:27.882 UTC [channelCmd] InitCmdFactory -> INFO 001[0m Endorser and orderer connections initialized
+[34m2020-05-29 08:36:27.907 UTC [cli.common] readBlock -> INFO 002[0m Received block: 0
+===================== Channel 'mychannel' created ===================== 
+
+Having all peers join the channel...
+[34m2020-05-29 08:36:27.957 UTC [channelCmd] InitCmdFactory -> INFO 001[0m Endorser and orderer connections initialized
+[34m2020-05-29 08:36:28.064 UTC [channelCmd] executeJoin -> INFO 002[0m Successfully submitted proposal to join channel
+===================== peer0.org1 joined channel 'mychannel' ===================== 
+
+Updating anchor peers for org1...
+[34m2020-05-29 08:36:31.131 UTC [channelCmd] InitCmdFactory -> INFO 001[0m Endorser and orderer connections initialized
+[34m2020-05-29 08:36:31.140 UTC [channelCmd] update -> INFO 002[0m Successfully submitted channel update
+===================== Anchor peers updated for org 'Org1MSP' on channel 'mychannel' ===================== 
+
+
+========= All GOOD, BYFN execution completed =========== 
+
+
+ _____   _   _   ____   
+| ____| | \ | | |  _ \  
+|  _|   |  \| | | | | | 
+| |___  | |\  | | |_| | 
+|_____| |_| \_| |____/  
+
+Installing smart contract on peer0.org1.example.com
+Instantiating smart contract on mychannel
+{ n: 0, ok: 1, deletedCount: 0 }
+Wallet path: /home/aditya/fabric/SLA-Violation-Single-Node-Compensation/HLF_logs/javascript/wallet
+Successfully enrolled admin user "admin" and imported it into the wallet

@@ -39,7 +39,7 @@ docker exec \
   cli \
   peer chaincode install \
     -n logchain \
-    -v 1.0 \
+    -v 2.0 \
     -p "$CC_SRC_PATH" \
     -l "$CC_RUNTIME_LANGUAGE"
 
@@ -54,7 +54,7 @@ docker exec \
     -C mychannel \
     -n logchain \
     -l "$CC_RUNTIME_LANGUAGE" \
-    -v 1.0 \
+    -v 2.0 \
     -c '{"Args":[]}' \
     -P "AND('Org1MSP.member')" \
     --tls \

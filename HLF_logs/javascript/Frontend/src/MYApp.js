@@ -4,7 +4,6 @@ import GetTransaction from './Components/GetTransaction/GetTransaction';
 import ViewTransaction from './Components/View Transaction/ViewTransaction';
 import Signin from './Components/SignIn/Signin';
 import Register from './Components/Register/Register';
-import compensation, { Compensation } from './Components/Compensation/Compensation'
 import 'bulma/css/bulma.css';
  import './App.css';
 
@@ -13,16 +12,19 @@ class App extends Component {
     super();
     this.state = {
       route: 'signin',
+      transactionData: null,
+      isTransactionData: false,
       isSignedIn: false,
-      currentUser: null,
-      user: null
+      currentUser: null
     }
   }
 
   
 
   onClickingView = (data) => {
-    this.setState({user: data});
+    this.setState({transactionData: data});
+    console.log(this.state.transactionData);
+    this.setState({isTransactionData: true})
     
   }
 
@@ -43,21 +45,19 @@ class App extends Component {
   }
 
   render() {
-    const {isSignedIn, user, route, currentUser} = this.state
+    const {isSignedIn, isTransactionData, transactionData, route, currentUser} = this.state
     return (  
       <div className="App mdiv"> 
-          <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn} onUser={this.onUser} currentUser={currentUser} />
+          <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn} transactionData={transactionData} onUser={this.onUser} currentUser={currentUser} />
           {   route === 'signin'
             ? <Signin onRouteChange={this.onRouteChange} currentUser={currentUser} onUser={this.onUser}/>
             : route === 'register'
             ? <Register onRouteChange={this.onRouteChange} />
             : route === 'home'
-            ? <GetTransaction onClickingView={this.onClickingView} onRouteChange={this.onRouteChange} currentUser={currentUser}/>
+            ? <GetTransaction isTransactionData={isTransactionData} transactionData={transactionData} onClickingView={this.onClickingView} onRouteChange={this.onRouteChange} />
             : route === 'logs'
-              ? <ViewTransaction user={user} currentUser={currentUser} />
-            : route ==='compensation'
-            ? <Compensation user={user} />
-            :<div></div>
+              ? <ViewTransaction isTransactionData={isTransactionData} transactionData={transactionData} currentUser={currentUser} />
+            : <div></div>
           }
     </div>
     );

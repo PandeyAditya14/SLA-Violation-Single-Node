@@ -4,7 +4,6 @@ import GetTransaction from './Components/GetTransaction/GetTransaction';
 import ViewTransaction from './Components/View Transaction/ViewTransaction';
 import Signin from './Components/SignIn/Signin';
 import Register from './Components/Register/Register';
-import compensation, { Compensation } from './Components/Compensation/Compensation'
 import 'bulma/css/bulma.css';
  import './App.css';
 
@@ -52,12 +51,10 @@ class App extends Component {
             : route === 'register'
             ? <Register onRouteChange={this.onRouteChange} />
             : route === 'home'
-            ? <GetTransaction onClickingView={this.onClickingView} onRouteChange={this.onRouteChange} currentUser={currentUser}/>
+            ? <GetTransaction onClickingView={this.onClickingView} onRouteChange={this.onRouteChange} />
             : route === 'logs'
               ? <ViewTransaction user={user} currentUser={currentUser} />
-            : route ==='compensation'
-            ? <Compensation user={user} />
-            :<div></div>
+            : <div></div>
           }
     </div>
     );
