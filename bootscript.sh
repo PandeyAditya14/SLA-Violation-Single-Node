@@ -8,7 +8,7 @@ cd -
 cd ../fabric-samples/first-network
 ./byfn.sh down
 
-cd ../../SLA-Violation-Single-Node-Compensation
+cd ../../SLA-VIolation-Single-Node
 ./rmcc.sh
 
 cd HLF_logs

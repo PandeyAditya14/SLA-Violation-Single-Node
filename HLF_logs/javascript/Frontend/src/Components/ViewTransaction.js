@@ -1,22 +1,21 @@
 import React from 'react';
-import LogsList from '../LogsList/LogsList';
-import Admin from '../Admin/Admin';
-import {Jumbotron} from 'react-bootstrap';
+import LogsList from './LogsList';
+import Admin from './Admin';
 
 const ViewTransaction = ({user,currentUser}) => {
     console.log('from view',currentUser)
         if(currentUser==='admin') {
             return(
-                <Jumbotron>
+                <div className="p-5">
                     <Admin transactionData={user} />  
-                </Jumbotron>
+                </div>
             ); 
         }
         else {
             return(
-                <Jumbotron>
+                <div className="p-5">
                     <LogsList transactionData={user} />  
-                </Jumbotron>
+                </div>
             ); 
         }
 }

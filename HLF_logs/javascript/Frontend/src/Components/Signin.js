@@ -1,5 +1,5 @@
 import React from 'react';
-import './Signin.css'
+import '../css/style.css'
 class Signin extends React.Component {
     constructor() {
         super();
@@ -67,11 +67,11 @@ class Signin extends React.Component {
     render() {
         const { username, password ,submitted,user } = this.state;
         return(
-            <div className="main">
+            <div className="main p-5">
                
             <section className="signup">
-                <div className="container">
-                    <div className="signup-content">
+                <div className="container1">
+                    <div className="signup-content si">
                         <form id="signup-form" className="signup-form">
                             <h2 className="form-title">LOG IN</h2>
                             <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>

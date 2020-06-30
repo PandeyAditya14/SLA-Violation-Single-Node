@@ -5,9 +5,9 @@ async function main() {
     console.log('connected to user1');
     var logsArr = 
         {
-            ram: 8,
-            os: 'windows',
-            load: 91,
+            ram: 16,
+            os: 'mac',
+            load: 85,
             autoscale: 1
         };
     var args= {

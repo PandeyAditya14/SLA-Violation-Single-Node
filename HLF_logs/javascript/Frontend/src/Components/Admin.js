@@ -12,6 +12,12 @@ const DatatablePage = (userData) => {
                 width: 100
             },
             {
+                label: 'Uid',
+                field: 'uid',
+                sort: 'asc',
+                width: 100
+            },
+            {
                 label: 'Load',
                 field: 'load',
                 sort: 'asc',
@@ -44,21 +50,25 @@ const DatatablePage = (userData) => {
 
 
 
-export default function LogList({transactionData}) {
+export default function Admin({transactionData}) {
   const userData = transactionData.data;
   console.log(userData);
   const data=DatatablePage(userData)
   return(
-    <div><h1>Violated logs</h1>
-    
+    <div>
+    <h1 className="display-4">Log history</h1>
+    <div className="mt-4">
         <MDBDataTable
           striped
           bordered
           hover
+          searching={false}
           data={data}
           paginationLabel={false}
           paging={false}
         />
+        </div>
+        
         </div>
 
   );

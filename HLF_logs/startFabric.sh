@@ -30,7 +30,7 @@ ORG1_TLS_ROOTCERT_FILE=${CONFIG_ROOT}/crypto/peerOrganizations/org1.example.com/
 ORDERER_TLS_ROOTCERT_FILE=${CONFIG_ROOT}/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 set -x
 
-echo "Installing smart contract on peer0.org1.example.com"
+echo "Installing smart contract on peer0.org1.example.com in startFabric"
 docker exec \
   -e CORE_PEER_LOCALMSPID=Org1MSP \
   -e CORE_PEER_ADDRESS=peer0.org1.example.com:7051 \

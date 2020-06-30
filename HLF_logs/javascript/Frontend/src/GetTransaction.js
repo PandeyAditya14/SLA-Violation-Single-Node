@@ -24,7 +24,18 @@ class GetTransaction extends React.Component {
         this.props.onClickingView({data: this.state.data});
         this.props.onRouteChange('logs');
         });
-      
+    }
+
+    onCompensate = async () => {
+        const ip = process.env.REACT_APP_IP
+        if(this.props.currentUser) {
+            console.log(this.props.currentUser)
+            await fetch(`http://${ip}:3001/compensate`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            });
+        }
     }
 
     onInputChange = (event) => {
@@ -37,6 +48,7 @@ class GetTransaction extends React.Component {
                     <h1>Welcome to the hyperledger network</h1>
                     <p className='pa4'>Lets you access real-time logs</p>
                     <Button variant='success' onClick={() => this.onClickingView('')}>Click here</Button>
+                    <Button variant='success' onClick={() => this.onCompensate()}>Compensate</Button>
                 </Jumbotron>
         );
         

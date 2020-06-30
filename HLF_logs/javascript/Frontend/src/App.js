@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import Navigation from './Components/Navigation/Navigation';
-import GetTransaction from './Components/GetTransaction/GetTransaction';
-import ViewTransaction from './Components/View Transaction/ViewTransaction';
-import Signin from './Components/SignIn/Signin';
-import Register from './Components/Register/Register';
-import compensation, { Compensation } from './Components/Compensation/Compensation'
-import 'bulma/css/bulma.css';
- import './App.css';
+import Navigation from './Components/Navigation';
+import Dashboard from './Components/Dashboard';
+import ViewTransaction from './Components/ViewTransaction';
+import Signin from './Components/Signin';
+import Register from './Components/Register';
+import Compensation from './Components/Compensation'
+import Footer from './Components/Footer';
+
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -45,21 +46,29 @@ class App extends Component {
   render() {
     const {isSignedIn, user, route, currentUser} = this.state
     return (  
-      <div className="App mdiv"> 
+      <div>
+      <div className="App"> 
           <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn} onUser={this.onUser} currentUser={currentUser} />
           {   route === 'signin'
             ? <Signin onRouteChange={this.onRouteChange} currentUser={currentUser} onUser={this.onUser}/>
             : route === 'register'
             ? <Register onRouteChange={this.onRouteChange} />
             : route === 'home'
-            ? <GetTransaction onClickingView={this.onClickingView} onRouteChange={this.onRouteChange} currentUser={currentUser}/>
+            ? <Dashboard onClickingView={this.onClickingView} onRouteChange={this.onRouteChange} currentUser={currentUser}/>
             : route === 'logs'
               ? <ViewTransaction user={user} currentUser={currentUser} />
             : route ==='compensation'
             ? <Compensation user={user} />
             :<div></div>
           }
+  
     </div>
+    <div className='footer1'>
+    <Footer />
+    </div>
+    
+    </div>
+   
     );
   }
 }

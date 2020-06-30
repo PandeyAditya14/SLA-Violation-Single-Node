@@ -1,7 +1,7 @@
 import React from 'react';
-import './Register.css';
-import '../../fonts/material-icon/css/material-design-iconic-font.min.css';
-import '../../css/style.css';
+// import './Register.css';
+// import '../../fonts/material-icon/css/material-design-iconic-font.min.css';
+import '../css/style.css';
 class Register extends React.Component {
     constructor() {
         super();
@@ -67,11 +67,11 @@ class Register extends React.Component {
         const { username, password, submitted,type,user } = this.state;
         return(
             
-            <div className="main">
+            <div className="main p-5">
                
         <section className="signup">
-            <div className="container">
-                <div className="signup-content">
+            <div className="container1">
+                <div className="signup-content si">
                     <form id="signup-form" className="signup-form">
                         <h2 className="form-title">Create account</h2>
                         <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>

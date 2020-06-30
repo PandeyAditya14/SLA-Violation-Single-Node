@@ -4,6 +4,7 @@
     width: 100%;
     overflow: hidden;
     align-items: center;
+    background-color: whitesmoke;
 }
 
 .fill-window {
@@ -26,9 +27,15 @@
 }
 
 
-.mdiv {
-  background-image: url(./images/blockchain.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+body {
   
+  font-family: 'Josefin Sans', sans-serif;
+}
+.footer1 {
+  background-color: rgb(161, 2, 2);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
 }

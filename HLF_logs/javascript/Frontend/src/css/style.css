@@ -147,7 +147,7 @@ body {
   background-position: center center;
   padding: 115px 0; }
 
-.container {
+.container1 {
   width: 660px;
   position: relative;
   margin: 0 auto; }
@@ -193,7 +193,9 @@ body {
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
-  padding: 50px 85px; }
+  padding: 50px 85px; 
+  width: auto;
+}
 
 .form-group {
   overflow: hidden;
@@ -352,8 +354,98 @@ input[type=checkbox]:not(old):checked + label > span:before {
   .container {
     width: calc(100% - 40px);
     max-width: 100%; } }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 280px) {
   .signup-content {
-    padding: 50px 25px; } }
+    padding: 20px 25px; } }
 
 /*# sourceMappingURL=style.css.map */
+
+#wrapper {
+  margin: 0;
+  display: flex;
+
+  /* This centers our sketch horizontally. */
+  justify-content: center;
+
+  /* This centers our sketch vertically. */
+  align-items: center;
+}
+
+
+.dis {
+font-size: 2rem;
+font-weight: 300;
+line-height: 1.2;
+}
+
+/*  */
+
+.footer {
+  flex-shrink: none;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+
+/*  */
+
+.navi {
+  background-color: grey;
+  color: white;
+}
+
+.navbar-brand,.nav-link    {
+  color: white;
+}   
+
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  background-color: rgb(161, 2, 2);
+  text-align: center;
+  font-size: 25px;
+  color: white;
+}
+
+/*  */
+
+.register {
+  align-items: center;
+}
+/*  */
+
+#buttonReg{
+  cursor: pointer;
+}
+
+.si {
+  box-shadow: 5px 5px 8px #888888;
+}   
+
+.form-submit {
+  background-image: Blue;
+}
+
+/*  */
+
+.table1 {
+  width: 75%;
+  align-content: center;
+  margin-left:15%; 
+  margin-right:15%;
+}
+
+.tabhead,.tabhead.th {
+  background-color: rgb(161, 2, 2);
+  color: white; 
+}
+
+.table {
+  border: 3px solid gainsboro; 
+}
+
+.comp p {
+  color: black;
+}
