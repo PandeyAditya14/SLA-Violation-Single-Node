@@ -16,7 +16,7 @@
     "author": "Hyperledger",
     "license": "Apache-2.0",
     "dependencies": {
-        "bcrypt": "^3.0.7",
+        "bcrypt": "^5.0.0",
         "circular-json": "^0.5.9",
         "cors": "^2.8.5",
         "dotenv": "^8.2.0",
